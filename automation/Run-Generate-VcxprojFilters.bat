@@ -2,10 +2,16 @@
 setlocal
 
 set "ScriptDir=%~dp0"
-pushd "%ScriptDir%\.."
+set "TargetArg=%~1"
 
-powershell -NoProfile -ExecutionPolicy Bypass -File "%ScriptDir%Generate-VcxprojFilters.ps1" -VcxprojPath "app\RhythmActionGame.vcxproj"
+if "%TargetArg%"=="" (
+    powershell -NoProfile -ExecutionPolicy Bypass -File "%ScriptDir%Generate-VcxprojFilters.ps1"
+) else (
+    if /I "%~x1"==".vcxproj" (
+        powershell -NoProfile -ExecutionPolicy Bypass -File "%ScriptDir%Generate-VcxprojFilters.ps1" -VcxprojPath "%TargetArg%"
+    ) else (
+        powershell -NoProfile -ExecutionPolicy Bypass -File "%ScriptDir%Generate-VcxprojFilters.ps1" -Profile "%TargetArg%"
+    )
+)
 
-set "ExitCode=%ERRORLEVEL%"
-popd
-exit /b %ExitCode%
+exit /b %ERRORLEVEL%
