@@ -5,7 +5,7 @@
 using namespace Hagine;
 
 void SentanWars::Initialize() {
-    Framework::Initialize();
+    this->Framework::Initialize();
     Framework::LoadResource();
     Framework::PlaySounds();
     Framework::RegisterShortcutKey();
@@ -20,7 +20,7 @@ void SentanWars::Initialize() {
     // -----------------------
 
     /// デバッグエントリマネージャの初期化
-    pDebugEntryManager_ = std::make_unique<DebugEntryManager>();
+    pDebugEntryManager_ = DebugEntryManager::GetInstance();
     pDebugEntryManager_->Initialize();
 }
 
@@ -55,7 +55,6 @@ void SentanWars::Update() {
     }
     imGuiManager_->ShowMainUI(offscreen_.get());
 
-    pDebugEntryManager_->GetInstance()
     pDebugEntryManager_->ImGui();
 
     imGuiManager_->End();
