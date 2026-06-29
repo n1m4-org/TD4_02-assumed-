@@ -127,6 +127,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="src\framework\SentanWars.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\math\Color.cpp" />
+    <ClCompile Include="src\scene\GameScene.cpp" />
     <ClCompile Include="src\utility\strutl.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -135,6 +136,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="src\debug\GameParameter.h" />
     <ClInclude Include="src\framework\SentanWars.h" />
     <ClInclude Include="src\math\Color.h" />
+    <ClInclude Include="src\scene\GameScene.h" />
     <ClInclude Include="src\utility\strutl.h" />
     <ClInclude Include="src\utility\ViewportUnits.hpp" />
   </ItemGroup>
