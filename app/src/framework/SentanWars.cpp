@@ -18,6 +18,10 @@ void SentanWars::Initialize() {
     sceneManager_->NextSceneReservation("TITLE");
 #endif // _DEBUG
     // -----------------------
+
+    /// デバッグエントリマネージャの初期化
+    pDebugEntryManager_ = std::make_unique<DebugEntryManager>();
+    pDebugEntryManager_->Initialize();
 }
 
 void SentanWars::Finalize() {
@@ -50,6 +54,10 @@ void SentanWars::Update() {
         imGuiManager_->ShowSceneWindow(offscreen_.get(), sceneManager_->GetCurrentSceneName());
     }
     imGuiManager_->ShowMainUI(offscreen_.get());
+
+    pDebugEntryManager_->GetInstance()
+    pDebugEntryManager_->ImGui();
+
     imGuiManager_->End();
 #endif // _DEBUG
 #ifndef _DEBUG

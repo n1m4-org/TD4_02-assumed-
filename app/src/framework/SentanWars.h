@@ -1,12 +1,13 @@
 #pragma once
 #include <Framework.h>
 #include <memory>
+#include <debug/DebugEntryManager.h>
 
-// MotionEditor はアプリ側 Utility（Hagine 名前空間外）
 class MotionEditor;
 
-class SentanWars : public Framework {
-  public: // メンバ関数
+class SentanWars : public Framework
+{
+public: // メンバ関数
     /// <summary>
     /// 初期化
     /// </summary>
@@ -27,7 +28,7 @@ class SentanWars : public Framework {
     /// </summary>
     void Draw() override;
 
-  private:
-    // ゲーム固有のモーション編集機能（エンジンには持たせない）
-    MotionEditor *motionEditor_ = nullptr;
+private:
+    MotionEditor* motionEditor_ = nullptr;
+    std::unique_ptr<DebugEntryManager> pDebugEntryManager_ = nullptr;
 };
